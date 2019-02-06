@@ -8,7 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Activity object provided for sending to message broker to further process.
@@ -26,8 +26,13 @@ public class Activity implements Serializable {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
     private String guid;
+
+    @Enumerated(EnumType.STRING)
     private ActivityType type;
-    private LocalDateTime created;
+
+    @Enumerated(EnumType.STRING)
+    private ActivityProcessType processType;
+    private Date created;
     @Lob
     private String jsonObject;
 

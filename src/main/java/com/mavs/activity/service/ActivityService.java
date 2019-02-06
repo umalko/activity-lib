@@ -7,7 +7,7 @@ import com.mavs.activity.model.ActivityType;
 import java.util.List;
 import java.util.Optional;
 
-public interface ActivityService<T> {
+public interface ActivityService {
 
     /**
      * Get activity by id

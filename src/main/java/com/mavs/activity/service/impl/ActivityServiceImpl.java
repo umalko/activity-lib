@@ -1,17 +1,20 @@
-package com.mavs.activity.service;
+package com.mavs.activity.service.impl;
 
 import com.google.common.collect.Lists;
 import com.mavs.activity.model.Activity;
 import com.mavs.activity.model.ActivityType;
 import com.mavs.activity.repository.ActivityRepository;
+import com.mavs.activity.service.ActivityService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ActivityServiceImpl<T> implements ActivityService<T> {
+@Transactional
+public class ActivityServiceImpl implements ActivityService {
 
     private final ActivityRepository activityRepository;
 

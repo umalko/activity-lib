@@ -1,7 +1,7 @@
 package com.mavs.activity.provider.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mavs.activity.model.Activity;
+import com.mavs.activity.dto.ActivityDto;
 import com.mavs.activity.provider.ActivityMessageQueueProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -24,10 +24,10 @@ public class ActivityMessageQueueProviderImpl implements ActivityMessageQueuePro
 
     @Async
     @Override
-    public void produceActivity(Activity activity) {
+    public void produceActivity(ActivityDto activityDto) {
         try {
-            String json = new ObjectMapper().writeValueAsString(activity);
-            rabbitTemplate.convertAndSend(activity.getType().name() + QUEUE, json);
+            String json = new ObjectMapper().writeValueAsString(activityDto);
+            rabbitTemplate.convertAndSend(activityDto.getType().name() + QUEUE, json);
         } catch (Exception e) {
             log.error("Something wrong!", e);
         }

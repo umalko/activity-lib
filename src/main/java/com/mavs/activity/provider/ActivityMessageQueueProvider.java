@@ -1,9 +1,9 @@
 package com.mavs.activity.provider;
 
 
-import com.mavs.activity.model.Activity;
+import com.mavs.activity.dto.ActivityDto;
 
 public interface ActivityMessageQueueProvider {
 
-    void produceActivity(Activity activity);
+    void produceActivity(ActivityDto activityDto);
 }
