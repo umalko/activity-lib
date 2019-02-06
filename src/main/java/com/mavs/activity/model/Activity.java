@@ -4,9 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,23 +16,22 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "activities")
 public class Activity implements Serializable {
 
+    public Activity(Activity activity) {
+        this.id = activity.getId();
+        this.guid = activity.getGuid();
+        this.type = activity.getType();
+        this.processType = activity.getProcessType();
+        this.created = activity.getCreated();
+        this.jsonObject = activity.getJsonObject();
+    }
+
     @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
     private String guid;
-
-    @Enumerated(EnumType.STRING)
     private ActivityType type;
-
-    @Enumerated(EnumType.STRING)
     private ActivityProcessType processType;
     private Date created;
-    @Lob
     private String jsonObject;
-
 }

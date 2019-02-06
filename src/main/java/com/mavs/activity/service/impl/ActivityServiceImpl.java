@@ -8,12 +8,10 @@ import com.mavs.activity.service.ActivityService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class ActivityServiceImpl implements ActivityService {
 
     private final ActivityRepository activityRepository;
