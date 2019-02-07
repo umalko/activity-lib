@@ -4,5 +4,7 @@ import java.io.Serializable;
 
 public enum ActivityType implements Serializable {
 
-    USER
+    USER,
+    NEW_RELATIONSHIP,
+    END_RELATIONSHIP
 }
